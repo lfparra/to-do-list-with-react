@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    
+    const[state, setState] = useState({
+        inputTasks : [],
+        
+    })
+
+    const handleChange = e => {
+        console.log(e.key)
+        if(e.key === "Enter" && e.target.value !== ""){
+            console.log(e.target.value);
+            let data = {
+                inputTasks : [...state.inputTasks, e.target.value] //["tarea1", "tarea2", "tarea3", "nuevaTarea"],
+            }
+            setState(prevState => {
+                return { ...prevState, ...data }
+            })
+            e.target.value = "";
+        }
+    }
+
+    return (
+        <div className="post-it">
+            <input type="text" placeholder="Press enter" onKeyPress={handleChange} />
+            <ul>
+                {
+                    state.inputTasks.length > 0?
+                    (
+                        state.inputTasks.map((elem, index,arr)=>{
+                            return <li>{arr[index]}</li>
+                        })
+                    ) :
+                    (
+                        <span>No hay tareas Pedientes</span>
+                    )
+                }
+                
+            </ul>
+        </div>
+    )
 }
 
 export default App;
