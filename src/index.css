@@ -37,3 +37,11 @@ input {
 ul {
     margin-top: 10px;
 }
+li, span {
+    font-size: 25px;
+    padding: 5px 0px;
+}
+.fa, .fas {
+    float: right;
+    margin-right: 15px;
+}
