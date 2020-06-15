@@ -24,8 +24,8 @@ const App = () => {
         console.log(e.target.id);
         let index = e.target.id;
         console.log(index);
-        let data = state.inputTasks.splice(e.target.id,1); 
-        
+        let data = state.inputTasks.splice(e.target.id, 1);
+
         setState(prevState => {
             return { ...prevState, ...data }
         })
@@ -33,23 +33,28 @@ const App = () => {
 
     return (
         <div className="row">
-            <div className="offset-lg-2 col-lg-8">
+            <div className="offset-3 col-6">
                 <div className="post-it">
                     <h3>To-Do List</h3>
                     <input type="text" placeholder="Press enter" onKeyPress={handleChangeInput} />
                     <ul>
                         {
                             state.inputTasks.length > 0 ?
-                                (
+                                (   
                                     state.inputTasks.map((elem, index, arr) => {
-                                        return <li key={index}>{arr[index]}<i className="fas fa-trash-alt" onClick={deleteTask} id={index}></i></li>
+                                        return (
+                                            <>
+                                            <li key={index}>{arr[index]}<i className="fas fa-trash-alt" onClick={deleteTask} id={index}></i></li>
+                                            </>
+                                        )
                                     })
                                 ) :
                                 (
-                                    <span>No hay tareas Pedientes</span>
-                                )
-                        }
+                                    <li>No hay tareas Pedientes</li>
+                                    )
+                            }
                     </ul>
+                    <h5>Tareas pendientes: {state.inputTasks.length}</h5>
                 </div>
             </div>
         </div>

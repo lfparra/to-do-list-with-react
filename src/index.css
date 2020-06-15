@@ -33,15 +33,28 @@ input {
     padding: 0;
     outline: none;
 }
-
 ul {
     margin-top: 10px;
+
 }
 li, span {
     font-size: 25px;
+    margin-bottom: 5px;
     padding: 5px 0px;
 }
 .fa, .fas {
     float: right;
     margin-right: 15px;
+    color: #ffc;
 }
+.fa:hover, .fas:hover {
+    color: black;
+}
+
+h5 {
+    position:absolute;
+    bottom:0px;
+    margin-left: 15px;
+    margin-bottom: 0px;
+}
+
